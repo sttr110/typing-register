@@ -29,6 +29,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->html->meta('icon');
 
 		//echo $this->html->css('cake.generic');
+		echo $this->html->css('footer');
+		echo $this->html->css('reset');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -47,6 +49,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+        <div id="footer">
+	  <?php echo $this->element('sql_dump'); ?>
+        </div>
 </body>
 </html>

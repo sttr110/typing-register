@@ -1,0 +1,13 @@
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 5px #777;
+  background: #fc8;
+  padding: 10px;
+}
+
+h2 {
+  border-bottom: solid 2px #777;
+  margin-bottom: 50px;
+}
