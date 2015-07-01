@@ -24,7 +24,7 @@
     <?php echo $word['Regist']['word_alphabet']; ?>
   </td>
   <td>
-    <?php echo $this->Html->link('修正',array('action' => 'fix')); ?>
+    <?php echo $this->Html->link('修正',array('action' => 'fix', $word['Regist']['id'])); ?>
   </td>
   <td>
     <?php echo $this->Html->link('削除',array('action' => 'delete')); ?>
