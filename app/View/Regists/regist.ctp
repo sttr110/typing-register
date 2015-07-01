@@ -1,8 +1,6 @@
 <h2>登録ページ</h2>
 
 
-
-
 <br>
 <hr>
 <h3>現在登録中の単語一覧</h3>
@@ -47,5 +45,7 @@ echo $this->Form->input('word', array('label' => '単語'));
 echo $this->Form->input('word_alphabet', array('label' => 'アルファベット'));
 echo $this->Form->end('追加');
 ?>
+
+<?php echo $this->Html->link('トップページに戻る', array('action' => 'index')); ?>
 
 
