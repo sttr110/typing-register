@@ -46,9 +46,11 @@ class RegistsController extends AppController {
     }
   }
 
-  public function delete() {
+  public function delete($id) {
+    if($this->Regist->delete($id)) {
+    }
 
+    return $this->redirect(array('action' => 'regist'));
   }
-
 }
 ?>

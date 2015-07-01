@@ -27,7 +27,7 @@
     <?php echo $this->Html->link('修正',array('action' => 'fix', $word['Regist']['id'])); ?>
   </td>
   <td>
-    <?php echo $this->Html->link('削除',array('action' => 'delete')); ?>
+    <?php echo $this->Html->link('削除',array('action' => 'delete', $word['Regist']['id'])); ?>
   </td>
 
 </tr>
@@ -40,10 +40,11 @@
 <br>
 <hr>
 <br>
+<h3>新規追加</h3>
 <?php
 echo $this->Form->create('Regist');
-echo $this->Form->input('word');
-echo $this->Form->input('word_alphabet');
+echo $this->Form->input('word', array('label' => '単語'));
+echo $this->Form->input('word_alphabet', array('label' => 'アルファベット'));
 echo $this->Form->end('追加');
 ?>
 
