@@ -8,8 +8,15 @@ class RegistsController extends AppController {
   }
   
   public function regist() {
-  
     $this->set('words', $this->Regist->find('all'));
+  }
+ 
+  public function fix() {
+  
+  }
+
+  public function delete() {
+
   }
 
 }
