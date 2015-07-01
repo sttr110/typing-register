@@ -7,7 +7,15 @@ class RegistsController extends AppController {
   }
   
   public function regist() {
-    $this->set('words', $this->Regist->find('all'));
+    $this->set('regist_data', $this->Regist->find('all'));
+  
+    //追加投稿
+    if($this->request->is('post')) { 
+      $this->Regist->create();
+      if($this->Regist->save($this->request->data)) {
+        return $this->redirect(array('action' => 'regist'));
+      }
+    }
   }
  
   public function fix($id = null) {

@@ -13,7 +13,7 @@
       <td>アルファベット</td>
     </tr>
   </thead>
-<?php foreach($words as $word): ?>
+<?php foreach($regist_data as $word): ?>
 
 
 <tr>
@@ -34,3 +34,17 @@
 
 <?php endforeach; ?>
 </table>
+
+<br>
+<br>
+<br>
+<hr>
+<br>
+<?php
+echo $this->Form->create('Regist');
+echo $this->Form->input('word');
+echo $this->Form->input('word_alphabet');
+echo $this->Form->end('追加');
+?>
+
+
