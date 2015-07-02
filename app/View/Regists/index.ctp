@@ -1,3 +1,9 @@
+<?php 
+  echo $this->Html->css('toppage');
+  echo $this->Html->script('//code.jquery.com/jquery-1.11.3.min.js');
+  echo $this->Html->script('function');
+?>
+
 <h1>hello</h1>
 
 <div id="word"></div>
@@ -33,7 +39,7 @@
 			<td>a</td>
 			<td>s</td>
 			<td>d</td>
-			<td>f</td>
+			<td id="key_f">f</td>
 			<td>g</td>
 			<td>h</td>
 			<td>j</td>

@@ -29,13 +29,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->html->meta('icon');
 
 		echo $this->html->css('cake.generic');
-		echo $this->html->css('toppage');
 		//echo $this->html->css('footer');
 		//echo $this->html->css('reset');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		echo $this->fetch('function');
 	?>
 </head>
 <body>
