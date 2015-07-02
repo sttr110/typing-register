@@ -5,6 +5,11 @@ class RegistsController extends AppController {
 
   public function index() {
     $this->set('regist_data', $this->Regist->find('all'));
+    
+    //独自関数
+    function _json_php_encode($data) {
+      return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    }
   }
   
   public function regist() {
@@ -53,5 +58,7 @@ class RegistsController extends AppController {
 
     return $this->redirect(array('action' => 'regist'));
   }
+
+
 }
 ?>

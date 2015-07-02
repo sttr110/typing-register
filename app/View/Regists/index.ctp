@@ -10,6 +10,14 @@
 <div id="word"> 
   <?php echo $word['Regist']['word']; ?>
 </div>
+
+
+<script>
+var array = <?php echo _json_php_encode($word['Regist']['word']); ?>;
+console.log(array);
+</script>
+
+
 <div id="word_alphabet">
   <?php echo $word['Regist']['word_alphabet']; ?>
 </div>
