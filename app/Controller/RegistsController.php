@@ -4,6 +4,7 @@ class RegistsController extends AppController {
   public $helpers = array('Html', 'Form');
 
   public function index() {
+    $this->set('regist_data', $this->Regist->find('all'));
   }
   
   public function regist() {

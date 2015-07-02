@@ -6,9 +6,14 @@
 ?>
 
 <h1>hello</h1>
-
-<div id="word"></div>
-<div id="word_alphabet"></div>
+<?php foreach($regist_data as $word) : ?>
+<div id="word"> 
+  <?php echo $word['Regist']['word']; ?>
+</div>
+<div id="word_alphabet">
+  <?php echo $word['Regist']['word_alphabet']; ?>
+</div>
+<?php endforeach; ?>
 
 <table>
 	<tbody>
