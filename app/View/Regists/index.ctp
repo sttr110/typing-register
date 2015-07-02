@@ -1,7 +1,8 @@
 <?php 
   echo $this->Html->css('toppage');
   echo $this->Html->script('//code.jquery.com/jquery-1.11.3.min.js');
-  echo $this->Html->script('function');
+  echo $this->Html->script('key_attention');
+  echo $this->Html->script('key_name');
 ?>
 
 <h1>hello</h1>
@@ -39,7 +40,7 @@
 			<td>a</td>
 			<td>s</td>
 			<td>d</td>
-			<td id="key_f">f</td>
+			<td id="key_70">f</td>
 			<td>g</td>
 			<td>h</td>
 			<td>j</td>
