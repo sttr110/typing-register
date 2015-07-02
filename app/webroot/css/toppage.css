@@ -1,0 +1,21 @@
+table {
+  border: solid 3px #ccc;
+}
+
+td {
+  border: solid 1px #ccc;
+  text-align: center;
+}
+
+#space {
+  text-align: center;
+}
+
+#word, #word_alphabet {
+  height: 40px;
+  width: 100%; 
+  border: solid 2px #777;
+  background: #ddd;
+  margin: 20px 0;
+}
+
