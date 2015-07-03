@@ -8,6 +8,11 @@ $(function() {
     if(event.keyCode == push_key) {
       $("#key_" + push_key).css("background", "#fc8"); 
     }
+
+    //backSpaceの無効化
+    if(event.keyCode == 8 || event.keyCode == 20) {
+      return false;
+    }
   }
 
   document.onkeyup = pullKey; 
