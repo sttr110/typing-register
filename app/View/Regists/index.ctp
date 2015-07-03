@@ -6,22 +6,32 @@
 ?>
 
 <h1>hello</h1>
-<?php foreach($regist_data as $word) : ?>
-<div id="word"> 
-  <?php echo $word['Regist']['word']; ?>
-</div>
 
-
+<!--word格納用配列を作成-->
 <script>
-var array = <?php echo _json_php_encode($word['Regist']['word']); ?>;
-console.log(array);
+  var array = new Array();
+</script>
+
+<?php foreach($regist_data as $word) : ?>
+  <!--登録されているwordをjs配列に格納 -->
+  <script>
+    array[<?php echo _json_php_encode($word['Regist']['id']); ?>] = <?php echo _json_php_encode($word['Regist']['word']); ?>;
+  </script>
+<?php endforeach; ?>
+
+<!--js配列に格納されいるwordを表示 -->
+<script>
+for(i=0; i<array.length; i++) {
+  if(array[i]) console.log(array[i]);
+}
 </script>
 
 
-<div id="word_alphabet">
-  <?php echo $word['Regist']['word_alphabet']; ?>
+<div id="word"> 
 </div>
-<?php endforeach; ?>
+<div id="word_alphabet">
+</div>
+
 
 <table>
 	<tbody>
