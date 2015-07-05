@@ -1,11 +1,20 @@
 <?php 
   echo $this->Html->css('toppage');
+  echo $this->Html->script('vue');
   echo $this->Html->script('//code.jquery.com/jquery-1.11.3.min.js');
   echo $this->Html->script('key_attention');
   echo $this->Html->script('key_name');
 ?>
 
 <h1>hello</h1>
+<script>
+var vm = new Vue({
+  data: {
+    message: "hello kangoroo",
+  }
+});
+console.log(vm.message);
+</script>
 
 <!--word格納用配列を作成-->
 <script>
