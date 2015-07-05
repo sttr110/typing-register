@@ -9,27 +9,32 @@
 
 <!--word格納用配列を作成-->
 <script>
-  var array = new Array();
+  var display_word = new Array();
+  var display_alphabet = new Array();
+  var i = 0;
 </script>
 
 <?php foreach($regist_data as $word) : ?>
   <!--登録されているwordをjs配列に格納 -->
   <script>
-    array[<?php echo _json_php_encode($word['Regist']['id']); ?>] = <?php echo _json_php_encode($word['Regist']['word']); ?>;
+    display_word[i] = <?php echo _json_php_encode($word['Regist']['word']); ?>;
+    display_alphabet[i] = <?php echo _json_php_encode($word['Regist']['word_alphabet']); ?>;
+    i++;
   </script>
 <?php endforeach; ?>
 
 <!--js配列に格納されいるwordを表示 -->
-<script>
-for(i=0; i<array.length; i++) {
-  if(array[i]) console.log(array[i]);
-}
-</script>
 
 
 <div id="word"> 
+  <script>
+   document.write(display_word[0]);
+  </script>
 </div>
 <div id="word_alphabet">
+  <script>
+   document.write(display_alphabet[0]);
+  </script>
 </div>
 
 
