@@ -7,20 +7,17 @@
 ?>
 
 <h1>hello</h1>
-<script>
-var vm = new Vue({
-  data: {
-    message: "hello kangoroo",
-  }
-});
-console.log(vm.message);
-</script>
 
 <!--word格納用配列を作成-->
 <script>
   var display_word = new Array();
   var display_alphabet = new Array();
   var i = 0;
+  $(function() {
+    $(window).keyup(function(e) {
+      vm.type();
+    });
+  });
 </script>
 
 <?php foreach($regist_data as $word) : ?>
@@ -39,13 +36,51 @@ console.log(vm.message);
   <script>
    document.write(display_word[0]);
   </script>
+  <br>
+  <script>
+    document.write(display_alphabet[0].charAt(0));
+  </script>
+
 </div>
 <div id="word_alphabet">
-  <script>
-   document.write(display_alphabet[0]);
-  </script>
-</div>
+ </div>
 
+<script>
+  var vm = new Vue({
+                data: {
+                    word_index: 0,
+                    character_index: 0,
+                },
+                methods: {
+                    type: function() {
+                        registered_character = display_alphabet[this.word_index].charAt(this.character_index);
+                        input_character = this.convertKey(event.keyCode);
+
+                        if(registered_character == input_character) {
+                            console.log(registered_character);
+                            this.character_index++;
+
+                            if(this.character_index == display_alphabet[this.word_index].length) {
+                              this.character_index = 0;
+
+                              if(word.length-1 <= this.word_index) {
+                                console.log("終了");
+                                this.word_index = 0;
+                                return 0;
+                              }
+                              this.word_index++;
+                              console.log("次!");
+                              console.log(display_alphabet[this.word_index]);
+                            }
+                        }
+                    },
+                    convertKey: function(key_code) {
+                      var tmp_char = String.fromCharCode(key_code);
+                      return tmp_char.toLowerCase();
+                    }
+                }
+            });
+</script>
 
 <table>
 	<tbody>
@@ -77,7 +112,7 @@ console.log(vm.message);
 			<td>a</td>
 			<td>s</td>
 			<td>d</td>
-			<td id="key_70">f</td>
+			<td>f</td>
 			<td>g</td>
 			<td>h</td>
 			<td>j</td>
