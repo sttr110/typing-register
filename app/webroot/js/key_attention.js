@@ -6,7 +6,7 @@ $(function() {
     push_key = event.keyCode;
 
     if(event.keyCode == push_key) {
-      $("#key_" + push_key).css("background", "#fc8"); 
+      $("#key_" + push_key).css("background", "#ccc"); 
     }
 
     //backSpaceの無効化
@@ -24,5 +24,13 @@ $(function() {
       $("#key_" + pull_key).css("background", "#fff"); 
     }
   }
+ 
+  var display_word = new Array();
+  var display_alphabet = new Array();
+  function setWordAlphabet(word, alphabet, index) {
+    display_word[index] = word; 
+    display_alphabet[index] = alphabet; 
+  }
+  
  
 });
