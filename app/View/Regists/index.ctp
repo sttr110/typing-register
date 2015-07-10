@@ -25,34 +25,29 @@
   <script>
     display_word[i] = <?php echo _json_php_encode($word['Regist']['word']); ?>;
     display_alphabet[i] = <?php echo _json_php_encode($word['Regist']['word_alphabet']); ?>;
-    //word = <?php echo _json_php_encode($word['Regist']['word']); ?>;
-    //alphabet = <?php echo _json_php_encode($word['Regist']['word_alphabet']); ?>;
-    //setWordAlphabet(word, alphabet, i);
     i++;
   </script>
 <?php endforeach; ?>
 
 <!--js配列に格納されいるwordを表示 -->
 
-
-<div id="word"> 
-  <script>
-   document.write(display_word[0]);
-  </script>
-  <br>
-  <script>
-    document.write(display_alphabet[0].charAt(0));
-  </script>
-
+<div id="show_words">
+  <div id="word"> 
+    <div v-text="show_word"></div>
+  </div>
+  <div id="word_alphabet">
+    <div v-text="show_alphabet"></div>
+  </div>
 </div>
-<div id="word_alphabet">
- </div>
 
 <script>
   var vm = new Vue({
+                el: "#show_words",
                 data: {
                     word_index: 0,
                     character_index: 0,
+                    show_word: display_word[0], 
+                    show_alphabet: display_alphabet[0], 
                 },
                 methods: {
                     type: function() {
@@ -86,6 +81,8 @@
                     next_word: function() {
                       this.character_index = 0;
                       this.word_index++;
+                      this.show_word = display_word[this.word_index];
+                      this.show_alphabet = display_alphabet[this.word_index];
                       console.log("次!");
                       console.log(display_alphabet[this.word_index]);
                       //2つ目以降の単語の最初のkeyを光らせる
