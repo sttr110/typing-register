@@ -7,14 +7,20 @@
 <table>
   <thead>
     <tr>
+      <td>番号</td>
       <td>単語</td>
       <td>アルファベット</td>
+      <td>修正する場合</td>
+      <td>削除する場合</td>
     </tr>
   </thead>
 <?php foreach($regist_data as $word): ?>
 
 
 <tr>
+  <td>
+    <?php echo $word['Regist']['id']; ?>
+  </td>
   <td>
     <?php echo $word['Regist']['word']; ?>
   </td>
