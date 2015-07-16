@@ -1,35 +1,19 @@
 <?php 
   echo $this->Html->css('toppage');
-  echo $this->Html->script('vue');
-  echo $this->Html->script('//code.jquery.com/jquery-1.11.3.min.js');
-  echo $this->Html->script('key_attention',array('inline' => true));
-  echo $this->Html->script('key_name');
+  echo $this->Html->script('//code.jquery.com/jquery-1.11.3.min.js', array('inline' => false));
+  echo $this->Html->script('vue', array('inline' => false));
+  echo $this->Html->script('functions',array('inline' => false));
 ?>
-
-<h1>hello</h1>
-
-<!--word格納用配列を作成-->
-<script>
-  var display_word = new Array();
-  var display_alphabet = new Array();
-  var i = 0;
-  $(function() {
-    $(window).keyup(function(e) {
-      vm.type();
-    });
-  });
-</script>
 
 <?php foreach($regist_data as $word) : ?>
   <!--登録されているwordをjs配列に格納 -->
   <script>
-    display_word[i] = <?php echo _json_php_encode($word['Regist']['word']); ?>;
-    display_alphabet[i] = <?php echo _json_php_encode($word['Regist']['word_alphabet']); ?>;
+    word = <?php echo _json_php_encode($word['Regist']['word']); ?>;
+    alphabet = <?php echo _json_php_encode($word['Regist']['word_alphabet']); ?>;
+    setWordAlphabet(word, alphabet, i); 
     i++;
   </script>
 <?php endforeach; ?>
-
-<!--js配列に格納されいるwordを表示 -->
 
 <div id="show_words">
   <div id="word"> 
@@ -42,58 +26,51 @@
 
 <script>
   var vm = new Vue({
-                el: "#show_words",
-                data: {
-                    word_index: 0,
-                    character_index: 0,
-                    show_word: display_word[0], 
-                    show_alphabet: display_alphabet[0], 
-                },
-                methods: {
-                    type: function() {
-                        //登録一文字と、入力一文字を変数に格納
-                        registered_character = display_alphabet[this.word_index].charAt(this.character_index);
-                        input_character = this.convertKey(event.keyCode);
-
-                        //登録文字と入力文字が一致したら、登録文字をインクリメント
-                        if(registered_character == input_character) {
-                            console.log(registered_character);
-                            this.character_index++;
-                            
-                            //次のkeyのみを光らせる
-                            this.next_key(display_alphabet[this.word_index].charAt(this.character_index));
-                            //カウンターと単語長が同じになれば、カウンターを0にする、単語の添え字をインクリメント 
-                            if(this.character_index == display_alphabet[this.word_index].length) this.next_word();
-                            if(!display_alphabet[this.word_index]) {
-                                this.stop_type(); 
-                                return 0;
-                            }
-
-                        }
-                    },
-                    convertKey: function(key_code) {
-                      var tmp_char = String.fromCharCode(key_code);
-                      return tmp_char.toLowerCase();
-                    },
-                    next_key: function(name) {
-                      $(".key_" + name).css("background", "#fc8"); 
-                    },
-                    next_word: function() {
-                      this.character_index = 0;
-                      this.word_index++;
-                      this.show_word = display_word[this.word_index];
-                      this.show_alphabet = display_alphabet[this.word_index];
-                      console.log("次!");
-                      console.log(display_alphabet[this.word_index]);
-                      //2つ目以降の単語の最初のkeyを光らせる
-                      this.next_key(display_alphabet[this.word_index].charAt(0));
-                    },
-                    stop_type: function() {
-                      console.log("終了");
-                      this.word_index = 0;
-                    }
-                }
-            });
+    el: "#show_words",
+    data: {
+      word_index: 0,
+      character_index: 0,
+      show_word: display_word[0], 
+      show_alphabet: display_alphabet[0], 
+    },
+    methods: {
+      type: function() {
+        //登録一文字と、入力一文字を変数に格納
+        registered_character = display_alphabet[this.word_index].charAt(this.character_index);
+	input_character = this.convertKey(event.keyCode);
+	//登録文字と入力文字が一致したら、登録文字をインクリメント
+	if(registered_character == input_character) {
+	  this.character_index++;
+	  //次のkeyのみを光らせる
+	  this.next_key(display_alphabet[this.word_index].charAt(this.character_index));
+	  //カウンターと単語長が同じになれば、カウンターを0にする、単語の添え字をインクリメント 
+	  if(this.character_index == display_alphabet[this.word_index].length) this.next_word();
+	    if(!display_alphabet[this.word_index]) {
+              this.stop_type(); 
+	      return 0;
+	    }
+	}
+      },
+      convertKey: function(key_code) {
+         var tmp_char = String.fromCharCode(key_code);
+	 return tmp_char.toLowerCase();
+      },
+      next_key: function(name) {
+        $(".key_" + name).css("background", "#fc8"); 
+      },
+      next_word: function() {
+        this.character_index = 0;
+	this.word_index++;
+	this.show_word = display_word[this.word_index];
+	this.show_alphabet = display_alphabet[this.word_index];
+	//2つ目以降の単語の最初のkeyを光らせる
+	this.next_key(display_alphabet[this.word_index].charAt(0));
+      },
+      stop_type: function() {
+        this.word_index = 0;
+      }
+    }
+  });
 </script>
 
 <table>
